@@ -31,7 +31,7 @@ const fetchAndStoreNews = async () => {
         const response = await axios.get(`https://newsdata.io/api/1/news`, {
             params: {
                 apikey: process.env.NEWS_API_KEY,  // Make sure the API key is correct
-                country: 'ire',  // Use any country you need
+                country: 'us',  // Use any country you need
                 category: 'technology' // Or any other category
             }
         });
