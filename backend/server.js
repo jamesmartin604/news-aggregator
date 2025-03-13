@@ -64,6 +64,7 @@ const fetchAndStoreNews = async () => {
 
 
 // Call API Every Minute
+fetchAndStoreNews();
 setInterval(fetchAndStoreNews, 60000);
 
 // Start Express Server
