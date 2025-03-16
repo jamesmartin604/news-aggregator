@@ -2,10 +2,13 @@ require('dotenv').config();
 const express = require('express');
 const axios = require('axios');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 const MONGO_URI = 'mongodb://localhost:27017/newsDB'; // MongoDB Connection
+
+app.use(cors());
 
 // Connect to MongoDB
 mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -66,6 +69,16 @@ const fetchAndStoreNews = async () => {
 // Call API Every Minute
 fetchAndStoreNews();
 setInterval(fetchAndStoreNews, 60000);
+
+// Get all the articles
+app.get('/articles', async (req, res) => {
+    try {
+        const articles = await News.find();
+        res.json(articles);
+    } catch (error) {
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
 
 // Start Express Server
 app.listen(PORT, () => {
