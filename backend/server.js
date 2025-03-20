@@ -17,43 +17,63 @@ mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
 
 // Define Mongoose Schema
 const newsSchema = new mongoose.Schema({
+    author: String,
     title: String,
     description: String,
-    content: String,
     url: String,
-    image_url: String,
-    publishedAt: Date,
-    source: String
+    source: String,
+    image: String,
+    category: String,
+    language: String,
+    country: String,
+    published_at: Date,
+    
 });
 
 const News = mongoose.model('News', newsSchema);
 
+//customise filters
+const COUNTRY = "gb";
+const CATEGORY = "technology";
+
 // Fetch News from API and Store in MongoDB
 const fetchAndStoreNews = async () => {
     try {
-        const response = await axios.get(`https://newsdata.io/api/1/news`, {
-            params: {
-                apikey: process.env.NEWS_API_KEY,  // Make sure the API key is correct
-                country: 'us',  // Use any country you need
-                category: 'technology' // Or any other category
+        const response = await axios.get(`http://api.mediastack.com/v1/news?access_key=b8557d17d14f10d8edb3e8503975f5b0&languages=en&countries=${COUNTRY}&categories=${CATEGORY}&limit=20`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
             }
         });
 
-        console.log("API Response:", response.data); // Log the response to check the content
+        let data = response.data;
 
-        const articles = response.data.results;
+        //filter out news with missing images or descs
+        const filteredArticles = data.data.filter(article => article.image && article.description);
 
-        if (articles && articles.length > 0) {
-            console.log(`Fetched ${articles.length} articles`);
+        //sort articles by most recent
+        const sortedArticles = filteredArticles.sort((a, b) => new Date(b.published_at) - new Date(a.published_at));
+
+        console.log("API Response:", sortedArticles); // Log the response to check the content
+
+        const articles = response.data.data;
+
+        if (sortedArticles && sortedArticles.length > 0) {
+            console.log(`Fetched ${sortedArticles.length} articles`);
             // Insert articles into MongoDB
-            const result = await News.insertMany(articles.map(article => ({
+            const result = await News.insertMany(sortedArticles.map(article => ({
+        
+
+                author: article.author,
                 title: article.title,
                 description: article.description,
-                content: article.content,
-                url: article.link,
-                image_url: article.image_url,
-                publishedAt: new Date(article.pubDate),
-                source: article.source_id
+                url: article.url,
+                source: article.source,
+                image: article.image,
+                category: article.category,
+                language: article.language,
+                country: article.country,
+                published_at: new Date(article.published_at),
             })));
 
             console.log('News articles stored in MongoDB:', result);  // Log result
