@@ -7,12 +7,14 @@ interface Props {
 function Squares({ titles }: Props) {
   return (
     <div className="squares-container">
-      {/* Top One-Third (empty space or header if needed) */}
+      {/* Top One-Third*/}
       <div className="squares-header">
-        <h1>AFFaiRs</h1>
+        <h1>
+          AFF<span className="highlight">AI</span>RS
+        </h1>
       </div>
 
-      {/* Bottom Two-Thirds (with squares) and navbar*/}
+      {/* Bottom Two-Thirds (with squares and navbar) */}
       <div className="navbar">
         <ul className="navlinks">
           <li>
@@ -32,14 +34,14 @@ function Squares({ titles }: Props) {
       <div className="squares-content">
         {/* First Row of Squares */}
         <div className="squares-row">
-          {titles.slice(0, 3).map((title) => (
+          {titles.slice(0, 4).map((title) => (
             <Square key={title} label={title} grow />
           ))}
         </div>
 
         {/* Second Row of Squares */}
         <div className="squares-row">
-          {titles.slice(3, 6).map((title) => (
+          {titles.slice(4, 8).map((title) => (
             <Square key={title} label={title} grow />
           ))}
         </div>

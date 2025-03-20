@@ -1,5 +1,5 @@
 /* styles.css */
-
+@import url('https://fonts.googleapis.com/css2?family=Abel&display=swap');
 /* ListGroup Component Styles */
 .list-group {
     list-style: none;
@@ -22,8 +22,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #28a745;
-    color: white;
+    background-color: lightgray;
+    border-color: gray;
+    color: black;
     border-radius: 8px;
     margin: 8px;
     height: 100%;
@@ -34,6 +35,7 @@
     aspect-ratio: 1 / 1;
     text-align: center;
     padding: 5px;
+    font-family: "Abel", sans-serif;
   }
   
   .square.grow {
@@ -87,6 +89,7 @@
   li a {
     display: block;
     color: black;
+    font-size: 150%;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
@@ -111,4 +114,11 @@
     display: flex;
     gap: 3rem; /* space between each list item */
     list-style: none;
+  }
+  h1{
+    font-family: "Abel", sans-serif;
+    font-size: 700%;
+  }
+  .highlight {
+    color: red;
   }
