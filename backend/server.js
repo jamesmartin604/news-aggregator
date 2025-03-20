@@ -20,7 +20,7 @@ const newsSchema = new mongoose.Schema({
     author: String,
     title: String,
     description: String,
-    url: String,
+    url: {type: String, unique: true}, // unique property prevents from adding duplicates to the database
     source: String,
     image: String,
     category: String,
@@ -93,7 +93,7 @@ setInterval(fetchAndStoreNews, 60000);
 // Get all the articles
 app.get('/articles', async (req, res) => {
     try {
-        const articles = await News.find();
+        const articles = await News.find().limit(8);
         res.json(articles);
     } catch (error) {
         res.status(500).json({ error: 'Internal server error' });
