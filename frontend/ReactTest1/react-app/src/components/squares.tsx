@@ -12,7 +12,23 @@ function Squares({ titles }: Props) {
         <h1>AFFaiRs</h1>
       </div>
 
-      {/* Bottom Two-Thirds (with squares) */}
+      {/* Bottom Two-Thirds (with squares) and navbar*/}
+      <div className="navbar">
+        <ul className="navlinks">
+          <li>
+            <a href="default.asp">Home</a>
+          </li>
+          <li>
+            <a href="Sports.asp">Sports</a>
+          </li>
+          <li>
+            <a href="Politics.asp">Politics</a>
+          </li>
+          <li>
+            <a href="Entertainment.asp">Entertainment</a>
+          </li>
+        </ul>
+      </div>
       <div className="squares-content">
         {/* First Row of Squares */}
         <div className="squares-row">
