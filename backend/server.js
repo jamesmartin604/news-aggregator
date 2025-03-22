@@ -10,6 +10,10 @@ const MONGO_URI = 'mongodb://localhost:27017/newsDB'; // MongoDB Connection
 
 app.use(cors());
 
+//fetches api key and endpoint from env file
+const API_KEY = process.env.API_KEY;
+const API_ENDPOINT = process.env.API_ENDPOINT;
+
 // Connect to MongoDB
 mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('Connected to MongoDB'))
@@ -39,7 +43,7 @@ const CATEGORY = "technology";
 // Fetch News from API and Store in MongoDB
 const fetchAndStoreNews = async () => {
     try {
-        const response = await axios.get(`http://api.mediastack.com/v1/news?access_key=b8557d17d14f10d8edb3e8503975f5b0&languages=en&countries=${COUNTRY}&categories=${CATEGORY}&limit=20`, {
+        const response = await axios.get(`${API_ENDPOINT}?access_key=${API_KEY}&languages=en&countries=${COUNTRY}&categories=${CATEGORY}&limit=20`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"
