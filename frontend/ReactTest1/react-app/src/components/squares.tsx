@@ -7,9 +7,10 @@ interface Article {
 
 interface Props {
   articles: Article[];
+  handleCategoryChange: (category: string) => void; // Add handleCategoryChange prop
 }
 
-function Squares({ articles }: Props) {
+function Squares({ articles, handleCategoryChange }: Props) {
   return (
     <div className="squares-container">
       {/* Top One-Third*/}
@@ -23,16 +24,16 @@ function Squares({ articles }: Props) {
       <div className="navbar">
         <ul className="navlinks">
           <li>
-            <a href="default.asp">Home</a>
+            <a href="#" onClick={() => handleCategoryChange('general')}>General</a>
           </li>
           <li>
-            <a href="Sports.asp">Sports</a>
+            <a href="#" onClick={() => handleCategoryChange('sports')}>Sports</a>
           </li>
           <li>
-            <a href="Politics.asp">Politics</a>
+            <a href="#" onClick={() => handleCategoryChange('technology')}>Technology</a>
           </li>
           <li>
-            <a href="Entertainment.asp">Entertainment</a>
+            <a href="#" onClick={() => handleCategoryChange('entertainment')}>Entertainment</a>
           </li>
         </ul>
       </div>
