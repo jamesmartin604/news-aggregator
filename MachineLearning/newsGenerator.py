@@ -53,11 +53,6 @@ completion = client.chat.completions.create(
 )
 
 summary = completion.choices[0].message.content
-# print(summary)
-# news_summary = {"news": news_content, "summary": summary}
-# print(news_summary)
-# result = news_summary_table.insert_one(news_summary)
-# print(result.inserted_id)
 
 try:
     news_summary = {
