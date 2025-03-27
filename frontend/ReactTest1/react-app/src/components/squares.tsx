@@ -1,10 +1,16 @@
 import Square from "./square";
 
-interface Props {
-  titles: string[];
+interface Article {
+  title: string;
+  image: string;
 }
 
-function Squares({ titles }: Props) {
+interface Props {
+  articles: Article[];
+  handleCategoryChange: (category: string) => void; // Add handleCategoryChange prop
+}
+
+function Squares({ articles, handleCategoryChange }: Props) {
   return (
     <div className="squares-container">
       {/* Top One-Third*/}
@@ -18,31 +24,40 @@ function Squares({ titles }: Props) {
       <div className="navbar">
         <ul className="navlinks">
           <li>
-            <a href="default.asp">Home</a>
+            <a href="#" onClick={() => handleCategoryChange('general')}>General</a>
           </li>
           <li>
-            <a href="Sports.asp">Sports</a>
+            <a href="#" onClick={() => handleCategoryChange('sports')}>Sports</a>
           </li>
           <li>
-            <a href="Politics.asp">Politics</a>
+            <a href="#" onClick={() => handleCategoryChange('technology')}>Technology</a>
           </li>
           <li>
-            <a href="Entertainment.asp">Entertainment</a>
+            <a href="#" onClick={() => handleCategoryChange('entertainment')}>Entertainment</a>
           </li>
         </ul>
       </div>
       <div className="squares-content">
         {/* First Row of Squares */}
         <div className="squares-row">
-          {titles.slice(0, 4).map((title) => (
-            <Square key={title} label={title} grow />
+          {articles.slice(0, 4).map((article) => (
+            <Square 
+            key={article.title} 
+            title={article.title}
+            imageUrl={article.image}
+            grow />
           ))}
         </div>
 
         {/* Second Row of Squares */}
         <div className="squares-row">
-          {titles.slice(4, 8).map((title) => (
-            <Square key={title} label={title} grow />
+          {articles.slice(4, 8).map((article) => (
+            <Square 
+            key={article.title}
+            title={article.title}
+            imageUrl={article.image}
+            grow 
+            />
           ))}
         </div>
       </div>
