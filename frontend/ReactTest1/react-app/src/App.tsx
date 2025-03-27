@@ -10,9 +10,14 @@ interface Article {
 
 function App() {
   const [backendData, setBackendData] = useState<Article[]>([]);
+  const [category, setCategory] = useState<string>('technology'); // state for selected category
 
   useEffect(() => {
-    fetch("http://localhost:5000/articles")
+
+    //Clear articles before fetching new ones
+    setBackendData([]);
+
+    fetch(`http://localhost:5000/articles?category=${category}`) // fetch articles based on category
       .then((response) => response.json())
       .then((data) => {
         setBackendData(data); // Set the fetched data to backendData
@@ -20,14 +25,15 @@ function App() {
       .catch((error) => {
         console.log("Error fetching data:", error);
       });
-  }, []);
-  
+  }, [category]); // refreshed data when category is changed
 
-  //removed 'const titles..' its no longer needed
+  const handleCategoryChange = (newCategory: string) => {
+    setCategory(newCategory); // Update category state
+  };
 
   return (
     <div>
-      <Squares articles={backendData} />
+      <Squares articles={backendData} handleCategoryChange={handleCategoryChange} />
     </div>
   );
 }
