@@ -2,8 +2,14 @@ import Squares from "./components/squares"; // Make sure the import path is corr
 import React, { useEffect, useState } from "react";
 import "./App.css";
 
+//creates a new interface for both title and images
+interface Article {
+  title: string;
+  image: string;
+}
+
 function App() {
-  const [backendData, setBackendData] = useState<{ title: string }[]>([]);
+  const [backendData, setBackendData] = useState<Article[]>([]);
 
   useEffect(() => {
     fetch("http://localhost:5000/articles")
@@ -15,13 +21,13 @@ function App() {
         console.log("Error fetching data:", error);
       });
   }, []);
+  
 
-  // Extract titles from backendData
-  const titles = backendData.map((article) => article.title);
+  //removed 'const titles..' its no longer needed
 
   return (
     <div>
-      <Squares titles={titles} />
+      <Squares articles={backendData} />
     </div>
   );
 }

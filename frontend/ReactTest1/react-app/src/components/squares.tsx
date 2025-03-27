@@ -1,10 +1,15 @@
 import Square from "./square";
 
-interface Props {
-  titles: string[];
+interface Article {
+  title: string;
+  image: string;
 }
 
-function Squares({ titles }: Props) {
+interface Props {
+  articles: Article[];
+}
+
+function Squares({ articles }: Props) {
   return (
     <div className="squares-container">
       {/* Top One-Third*/}
@@ -34,15 +39,24 @@ function Squares({ titles }: Props) {
       <div className="squares-content">
         {/* First Row of Squares */}
         <div className="squares-row">
-          {titles.slice(0, 4).map((title) => (
-            <Square key={title} label={title} grow />
+          {articles.slice(0, 4).map((article) => (
+            <Square 
+            key={article.title} 
+            title={article.title}
+            imageUrl={article.image}
+            grow />
           ))}
         </div>
 
         {/* Second Row of Squares */}
         <div className="squares-row">
-          {titles.slice(4, 8).map((title) => (
-            <Square key={title} label={title} grow />
+          {articles.slice(4, 8).map((article) => (
+            <Square 
+            key={article.title}
+            title={article.title}
+            imageUrl={article.image}
+            grow 
+            />
           ))}
         </div>
       </div>
