@@ -3,6 +3,7 @@ import base64
 from openai import AzureOpenAI
 from pymongo import MongoClient
 from pymongo.errors import PyMongoError
+from azure.identity import DefaultAzureCredential, get_bearer_token_provider
 import pandas as pd
 
 myclient = MongoClient("mongodb://localhost:27017")
@@ -16,16 +17,27 @@ news_js = news_table.find({'author': "Joanne Gould"})
 
 
 
-endpoint = os.getenv("ENDPOINT_URL", "https://news-summarize-generator.openai.azure.com/")
-deployment = os.getenv("DEPLOYMENT_NAME", "gpt-4-news-summarize-generator")
-subscription_key = os.getenv("AZURE_OPENAI_API_KEY", "9Z90r1pd0JGTM3mt2KhFu19OdcV2cgSmkiS0qsjW9n2fvQ23x5nPJQQJ99BCACmepeSXJ3w3AAABACOG5KuG")
+#endpoint = os.getenv("ENDPOINT_URL", "https://news-summarize-generator.openai.azure.com/")
+# deployment = os.getenv("DEPLOYMENT_NAME", "gpt-4-news-summarize-generator")
+#subscription_key = os.getenv("AZURE_OPENAI_API_KEY", "9Z90r1pd0JGTM3mt2KhFu19OdcV2cgSmkiS0qsjW9n2fvQ23x5nPJQQJ99BCACmepeSXJ3w3AAABACOG5KuG")
+endpoint = os.getenv("ENDPOINT_URL", "https://newsaggregator7983660224.openai.azure.com/")
+deployment = os.getenv("DEPLOYMENT_NAME", "gpt-4o")
+subscription_key = os.getenv("AZURE_OPENAI_API_KEY", "55gPPjfMszfUyfzI0Ty70VFgj4HuzgHHFbvso6RANBBmd9oySIvPJQQJ99BCACYeBjFXJ3w3AAAAACOGCfs7")
 
-# Initialize Azure OpenAI Service client with key-based authentication    
+# Initialize Azure OpenAI Service client with key-based authentication
 client = AzureOpenAI(
     azure_endpoint=endpoint,
     api_key=subscription_key,
     api_version="2024-05-01-preview",
 )
+
+# Initialize Azure OpenAI Service client with key-based authentication    (gpt4)
+# client = AzureOpenAI(
+#     azure_endpoint=endpoint,
+#     api_key=subscription_key,
+#     api_version="2024-05-01-preview",
+# )
+
 
 # IMAGE_PATH = "YOUR_IMAGE_PATH"
 # encoded_image = base64.b64encode(open(IMAGE_PATH, 'rb').read()).decode('ascii')
