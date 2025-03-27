@@ -43,17 +43,17 @@ messages = chat_prompt
 completion = client.chat.completions.create(
     model=deployment,
     messages=messages,
-    max_tokens=30,
-    temperature=0.7,
-    top_p=0.95,
+    max_tokens=30, # control the number of the outputs
+    temperature=0.2, # 0 <- More stable answer, 1 <- More variety answer
+    top_p=0.95, # Choice the next word which the probability more than 95%
     frequency_penalty=0,
-    presence_penalty=0,
+    presence_penalty=0, # 0 <- More relate topic answer, 1 <- More variety answer
     stop=None,
     stream=False
 )
 
 summary = completion.choices[0].message.content
-
+print(f"The summary is: {summary}")
 try:
     news_summary = {
         "news_title": news_content,
