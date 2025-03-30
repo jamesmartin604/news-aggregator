@@ -12,6 +12,7 @@
   "dependencies": {
     "bootstrap": "^5.3.3",
     "react": "^19.0.0",
+    "react-app": "file:",
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
@@ -25,6 +26,6 @@
     "globals": "^15.15.0",
     "typescript": "~5.7.2",
     "typescript-eslint": "^8.24.1",
-    "vite": "^6.2.2"
+    "vite": "^6.2.3"
   }
 }
