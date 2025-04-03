@@ -1,14 +1,18 @@
 import Squares from "./components/squares"; // Make sure the import path is correct!
 import React, { useEffect, useState } from "react";
+import { Route, Routes } from 'react-router-dom';
+import SignUp from './SignUp.tsx';
 import "./App.css";
 import Loader from "./components/Loader.tsx";
+import { Link } from 'react-router-dom'; // Import Link here
+
+
 
 //creates a new interface for both title and images
 interface Article {
   title: string;
   image: string;
 }
-
 //Loading animation function
 const useLoading = () => { 
   const [loading, setLoading] = useState(true);
@@ -51,8 +55,20 @@ function App() {
     setCategory(newCategory); // Update category state
   };
 
+  const currentDate = new Date().toLocaleDateString();
+
+
   return (
     <div>
+      <hr/>
+   <div className="date-container">
+   <p className="date"> {currentDate}</p>
+   <Link to="/signup">
+         <img className="user-icon" src="/user.png" />
+   </Link>
+   </div>
+   <hr/>
+
     {loading ? ( //if page is loading, show loading animation
                 
                 <div className="flexbox_center"  style={{ marginTop: "20%" }}>

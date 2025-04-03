@@ -276,6 +276,7 @@ hr {
 }
 
 
+
 .squares-row {
   display: flex;
   gap: 10px;
@@ -299,3 +300,4 @@ hr {
   height: 100%;
   object-fit: cover; /* Crops and fills */
 }
+
