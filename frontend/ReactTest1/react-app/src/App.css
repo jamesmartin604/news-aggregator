@@ -141,3 +141,50 @@
   .highlight {
     color: red;
   }
+
+  .flexbox_center{
+    display: flex;
+    justify-content: center; /* centers horizontally*/
+  }
+
+  /*styling for loading animation*/
+
+  .spinner { /*A box for the other loading elements to be in*/
+  position: relative;
+  width: 80px;
+  height: 40px;
+}
+
+.dot1, .dot2, .dot3 {
+  position: absolute; /*absolute means its position is relative to the relative bo its in*/
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: red;
+  animation: bounce 0.6s infinite alternate; /*use bounce animation specified below*/
+}
+
+.dot1 {
+  left: 0; /*positioned at the left most spot on .spinner*/
+  animation-delay: 0s; /*this dot will move first due to the 0 delay*/
+}
+
+.dot2 {
+  left: 32.5px;  /*half the spinner width - half the dots width*/
+  animation-delay: 0.15s;
+}
+
+.dot3 {
+  right: 0;
+  animation-delay: 0.3s;
+}
+
+/*loading aniamtion*/
+@keyframes bounce {
+  0% { /*at start of aniamtion*/
+      transform: translateY(0); /*dots are in original position*/
+  }
+  100% {/*at end of aniamtion*/
+      transform: translateY(-20px);/*dots are 20px up from original position*/
+  }
+}
