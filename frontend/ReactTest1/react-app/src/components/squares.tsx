@@ -24,16 +24,24 @@ function Squares({ articles, handleCategoryChange }: Props) {
       <div className="navbar">
         <ul className="navlinks">
           <li>
-            <a href="#" onClick={() => handleCategoryChange('general')}>General</a>
+            <a href="#" onClick={() => handleCategoryChange("general")}>
+              General
+            </a>
           </li>
           <li>
-            <a href="#" onClick={() => handleCategoryChange('sports')}>Sports</a>
+            <a href="#" onClick={() => handleCategoryChange("sports")}>
+              Sports
+            </a>
           </li>
           <li>
-            <a href="#" onClick={() => handleCategoryChange('technology')}>Technology</a>
+            <a href="#" onClick={() => handleCategoryChange("technology")}>
+              Technology
+            </a>
           </li>
           <li>
-            <a href="#" onClick={() => handleCategoryChange('entertainment')}>Entertainment</a>
+            <a href="#" onClick={() => handleCategoryChange("entertainment")}>
+              Entertainment
+            </a>
           </li>
         </ul>
       </div>
@@ -41,22 +49,23 @@ function Squares({ articles, handleCategoryChange }: Props) {
         {/* First Row of Squares */}
         <div className="squares-row">
           {articles.slice(0, 4).map((article) => (
-            <Square 
-            key={article.title} 
-            title={article.title}
-            imageUrl={article.image}
-            grow />
+            <Square
+              key={article.title}
+              title={article.title}
+              imageUrl={article.image}
+              grow
+            />
           ))}
         </div>
 
         {/* Second Row of Squares */}
         <div className="squares-row">
           {articles.slice(4, 8).map((article) => (
-            <Square 
-            key={article.title}
-            title={article.title}
-            imageUrl={article.image}
-            grow 
+            <Square
+              key={article.title}
+              title={article.title}
+              imageUrl={article.image}
+              grow
             />
           ))}
         </div>
