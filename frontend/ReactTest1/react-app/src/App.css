@@ -1,5 +1,24 @@
 /* styles.css */
 @import url('https://fonts.googleapis.com/css2?family=Abel&display=swap');
+/* Default Light Mode */
+.app-container {
+  background-color: #ffffff;
+  color: #000000;
+  min-height: 100vh;
+  padding: 20px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Dark Mode */
+.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+
+
+
+
 /* ListGroup Component Styles */
 .list-group {
     list-style: none;
@@ -113,7 +132,18 @@
     padding: 14px 16px;
     text-decoration: none;
   }
+  .dark-mode li a{
+    background: #121212;
+    color: white;
+    transition: background 0.3s, color 0.3s;
+  }
   
+  .light-mode li a{
+    background-color: white;
+    color: black;
+    transition: background 0.3s, color 0.3s;
+  }
+
   li a:hover:not(.active) {
     background-color: lightgrey;
   }
@@ -127,13 +157,39 @@
     justify-content: center; /* pushes children to opposite sides */
     align-items: center; /* vertically centers them */
     padding: 1rem;
+    background-color: white;
+    transition: background 0.3s, color 0.3s;
+  }
+
+  .dark-mode .navbar {
+    background: #121212;
+    transition: background 0.3s, color 0.3s;
   }
 
   .navlinks {
     display: flex;
     gap: 3rem; /* space between each list item */
     list-style: none;
+    transition: background 0.3s, color 0.3s;
   }
+  /* Light Mode Button */
+.light-mode .navlinks {
+  background: #fff;
+  color: #333;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* Dark Mode Button */
+.dark-mode .navlinks {
+  background: #121212;
+  color: white;
+  transition: background 0.3s, color 0.3s;
+}
+
+
+
+
+
   h1{
     font-family: "Abel", sans-serif;
     font-size: 700%;
@@ -300,4 +356,3 @@ hr {
   height: 100%;
   object-fit: cover; /* Crops and fills */
 }
-
