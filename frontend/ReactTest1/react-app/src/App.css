@@ -188,3 +188,116 @@
       transform: translateY(-20px);/*dots are 20px up from original position*/
   }
 }
+
+.date {
+  margin-left: 15px;
+  color: red;
+  font-family: "Abel", sans-serif;
+  font-size: 150%;
+  margin-top: 15px;
+}
+
+
+.user-icon {
+  width: 30px;
+  height: 30px;
+  margin-left: auto;
+  margin-right: 20px;
+  margin-top: 15px;
+  cursor: pointer;
+}
+
+
+.date-container {
+  display: flex;
+  justify-content: space-between; /* This will space out the date and the icon */
+  margin-top: 12px;
+}
+
+
+hr {
+  border-top: 2px solid grey;
+  margin: 10px;
+  width: 100%;
+}
+
+
+.signup-container{
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  margin-top: 200px;
+  background: rgb(138, 11, 11);
+  padding-bottom: 30px;
+}
+
+
+.signup-header{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 9px;
+  width: 100%;
+  margin-top: 30px;
+}
+
+
+.text {
+  color:#ddd;
+  font-size: 48px;
+  font-weight: 700;
+}
+
+
+.underline {
+  width: 61px;
+  height: 6px;
+  background: #ddd;
+  border-radius: 9px;
+}
+
+
+.inputs {
+  margin-top: 55px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+
+.input {
+  display: flex;
+  align-items: center;
+  margin: auto;
+  width: 480px;
+  height: 80px;
+  background: #ddd;
+  border-radius: 6px;
+}
+
+
+
+.squares-row {
+  display: flex;
+  gap: 10px;
+}
+
+.square {
+  width: 100%;
+  max-width: 250px;
+  text-align: center;
+}
+
+.square-content-image {
+  width: 100%;
+  aspect-ratio: 16 / 9; /* Set desired aspect ratio */
+  overflow: hidden;
+  border-radius: 8px; /* Optional for aesthetics */
+}
+
+.square-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Crops and fills */
+}
+
