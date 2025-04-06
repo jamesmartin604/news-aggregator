@@ -15,8 +15,15 @@
   color: #ffffff;
 }
 
-
-
+html { /*html css to make sure darkmode covers whole screen*/
+  background-color: #ffffff;
+  color: #000000;
+}
+html.dark-mode{
+  background: #121212;
+  color: #ffffff;
+  transition: background 0.3s, color 0.3s;
+}
 
 
 /* ListGroup Component Styles */
@@ -355,4 +362,59 @@ hr {
   width: 100%;
   height: 100%;
   object-fit: cover; /* Crops and fills */
+}
+
+/*Popup large Square CSS*/
+.largeSquare{
+  position: absolute; 
+  border: 1px solid #dee2e6; /*border colour makes it look more distingishable in darkmode*/
+  border-radius: 0.25rem;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.265); 
+  position: fixed; /*makes content stay in place when you scroll*/
+  top: 50%; 
+  left: 50%;
+  transform: translate(-50%, -50%); /* centers box*/
+  max-Width: 80vw; /* prevent it from overflowing past window*/
+  max-Height: 80vh;
+  overflow-y: auto; /* scroll if content is too tall*/
+  display: flex;
+  flex-Direction: column;
+  justify-Content: center;
+  align-Items: center;
+  z-Index: 100; /* To make it above any other elements*/
+  background-Color: white; 
+  padding: 1rem;
+  border-Radius: 1rem;
+  transition: background 0.3s, color 0.3s; /*animation for darkmode/lightmode */
+}
+
+.dark-mode .largeSquare {
+  background: #121212;
+  transition: background 0.3s, color 0.3s;
+}
+
+.largeSquareDate{
+  font-size:small;
+  color: lightslategray;
+}
+
+.largeSquareButton{ /*Style for close button x for large square*/
+  position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    width: 24px;
+    height: 24px;
+    background-Color: #ff0019;
+    color: white;
+    border: none;
+    border-Radius: 4px;
+    display: flex;
+    justify-Content: center;
+    align-Items: center;
+    cursor: pointer;
+}
+
+.largeSquareButton:hover{
+  background-Color: #9b0010;
+  color: #b1b1b1;
 }
