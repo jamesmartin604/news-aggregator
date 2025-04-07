@@ -34,6 +34,15 @@ function App() {
   const loading = useLoading(); //for loading animation
   const [isDarkMode, setIsDarkMode] = useState(false);
 
+  // makes it so that dark mode covers all of the html page
+  useEffect(() => {
+    if (isDarkMode) {
+      document.documentElement.classList.add("dark-mode"); //adds .dark-mode to html
+    } else {
+      document.documentElement.classList.remove("dark-mode"); //removes .dark-mode from html
+    }
+  }, [isDarkMode]);
+
   useEffect(() => {
     //Clear articles before fetching new ones
     setBackendData([]);
