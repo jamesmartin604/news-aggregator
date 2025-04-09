@@ -84,6 +84,7 @@ function App() {
           <Squares
             articles={backendData}
             handleCategoryChange={handleCategoryChange}
+            currentCategory={category} // Pass the current category to Squares component
           />
           <button
             className="nav-button"
