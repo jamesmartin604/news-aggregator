@@ -94,7 +94,7 @@ const fetchAndStoreNews = async (category) => {
                         },
                         { upsert: true }
                     );
-                    console.log(`Processed article: ${article.title}`);
+                    console.log(`Processed article: ${article.title} ${article.published_at}`);
                 } catch (error) {
                     console.error('Error processing article:', error.message);
                 }
@@ -123,14 +123,16 @@ function getValidDate(article) {
 }
 
 // Call API Every hour
-//fetchAndStoreNews('sports'); //commented this out as it was calling too often
+fetchAndStoreNews('entertainment'); //commented this out as it was calling too often
 //setInterval(() => fetchAndStoreNews('sports'), 30000);
 
 // Get all the articles
 app.get('/articles', async (req, res) => {
     const category = req.query.category || 'sports'; // Default to 'sports' if no category is provided
     try {
-        const articles = await News.find({ category }).limit(8);
+        const articles = await News.find({ category })
+        .sort({published_at: -1})
+        .limit(8);
         res.json(articles);
     } catch (error) {
         res.status(500).json({ error: 'Internal server error' });
