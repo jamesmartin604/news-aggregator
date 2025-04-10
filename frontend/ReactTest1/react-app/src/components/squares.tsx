@@ -1,6 +1,6 @@
 import Square from "./square";
-import {useState} from "react";
-import LargeSquare from "./LargeSquare";//import large square for showing summary
+import { useState } from "react";
+import LargeSquare from "./LargeSquare"; //import large square for showing summary
 
 interface Article {
   title: string;
@@ -18,21 +18,24 @@ interface Props {
 }
 
 function Squares({ articles, handleCategoryChange, currentCategory }: Props) {
-  const[activeSquare, setActiveSquare] = useState<Article | null>(null); //state to cheep track of what square is clicked or not
+  const [activeSquare, setActiveSquare] = useState<Article | null>(null); //state to cheep track of what square is clicked or not
 
-   const squareClicked = (article: Article) =>{//when square is clicked, open large square
-  setActiveSquare((prev) => ( prev && prev.title === article.title ? null: article)); 
-  }
+  const squareClicked = (article: Article) => {
+    //when square is clicked, open large square
+    setActiveSquare((prev) =>
+      prev && prev.title === article.title ? null : article
+    );
+  };
 
   return (
-    <div className="squares-container"
+    <div
+      className="squares-container"
       onClick={() => setActiveSquare(null)} //click anywhere not in large square when its active to close large square
-      >
-
+    >
       {/* Top One-Third*/}
       <div className="squares-header">
         <h1>
-          <span className="highlight">AI</span>RS
+          AFF<span className="highlight">AI</span>RS
         </h1>
       </div>
 
@@ -40,22 +43,38 @@ function Squares({ articles, handleCategoryChange, currentCategory }: Props) {
       <div className="navbar">
         <ul className="navlinks">
           <li>
-            <a href="#" onClick={() => handleCategoryChange("general")} className={currentCategory === "general" ? "active" : ""}>
+            <a
+              href="#"
+              onClick={() => handleCategoryChange("general")}
+              className={currentCategory === "general" ? "active" : ""}
+            >
               General
             </a>
           </li>
           <li>
-            <a href="#" onClick={() => handleCategoryChange("sports")} className={currentCategory === "sports" ? "active" : ""}>
+            <a
+              href="#"
+              onClick={() => handleCategoryChange("sports")}
+              className={currentCategory === "sports" ? "active" : ""}
+            >
               Sports
             </a>
           </li>
           <li>
-            <a href="#" onClick={() => handleCategoryChange("technology")} className={currentCategory === "technology" ? "active" : ""}>
+            <a
+              href="#"
+              onClick={() => handleCategoryChange("technology")}
+              className={currentCategory === "technology" ? "active" : ""}
+            >
               Technology
             </a>
           </li>
           <li>
-            <a href="#" onClick={() => handleCategoryChange("entertainment")} className={currentCategory === "entertainment" ? "active" : ""}>
+            <a
+              href="#"
+              onClick={() => handleCategoryChange("entertainment")}
+              className={currentCategory === "entertainment" ? "active" : ""}
+            >
               Entertainment
             </a>
           </li>
@@ -65,16 +84,19 @@ function Squares({ articles, handleCategoryChange, currentCategory }: Props) {
         {/* First Row of Squares */}
         <div className="squares-row">
           {articles.slice(0, 4).map((article) => (
-              <div key={article.title} onClick={(e) => { 
+            <div
+              key={article.title}
+              onClick={(e) => {
                 e.stopPropagation();
                 squareClicked(article); //if square is clicked, open function squareClicked
-              }} >
-            <Square
-              key={article.title}
-              title={article.title}
-              imageUrl={article.image}
-              grow
-            />
+              }}
+            >
+              <Square
+                key={article.title}
+                title={article.title}
+                imageUrl={article.image}
+                grow
+              />
             </div>
           ))}
         </div>
@@ -82,25 +104,30 @@ function Squares({ articles, handleCategoryChange, currentCategory }: Props) {
         {/* Second Row of Squares */}
         <div className="squares-row">
           {articles.slice(4, 8).map((article) => (
-            <div key={article.title} onClick={(e) => {
-              e.stopPropagation();
-            squareClicked(article); //if square is clicked, open function squareClicked
-            }} >
-            <Square
+            <div
               key={article.title}
-              title={article.title}
-              imageUrl={article.image}
-              grow
-            />
+              onClick={(e) => {
+                e.stopPropagation();
+                squareClicked(article); //if square is clicked, open function squareClicked
+              }}
+            >
+              <Square
+                key={article.title}
+                title={article.title}
+                imageUrl={article.image}
+                grow
+              />
             </div>
           ))}
         </div>
-        {activeSquare &&( //render large square, overlay makes it a popup
-        <div className="overlay" onClick={(e) => e.stopPropagation()}> 
-        <LargeSquare article={activeSquare} onClose={() => setActiveSquare(null)} />
+        {activeSquare && ( //render large square, overlay makes it a popup
+          <div className="overlay" onClick={(e) => e.stopPropagation()}>
+            <LargeSquare
+              article={activeSquare}
+              onClose={() => setActiveSquare(null)}
+            />
           </div>
         )}
-
       </div>
     </div>
   );
