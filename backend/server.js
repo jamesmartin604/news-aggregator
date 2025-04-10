@@ -113,7 +113,8 @@ const fetchAndStoreNews = async (category) => {
 
 // function to handle different date formats
 function getValidDate(article) {
-    const dateString = article.publishedAt || article.pubDate || article.date;
+    const dateString = article.published_at;
+    console.log(dateString);
     
     if (!dateString) return new Date(); //  current date if no date exists
     
