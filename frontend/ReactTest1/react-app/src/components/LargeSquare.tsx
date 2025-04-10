@@ -11,7 +11,10 @@ interface Article {
 
   const formatDate = (date: Date | string ): string => { //this makes the Date into a more readable String
     const oldDate = new Date(date); //if date is being read as a string, make it a Date
-   let hours = oldDate.getHours();
+
+    //------------------COMMENTED OUT-----------------
+    //commented out Time part of date, as they were the same across all articles (showed fetch time not published time)
+   /*let hours = oldDate.getHours();
    let minutes = oldDate.getMinutes();
    let ampm = hours >= 12 ? "pm" : "am"; //using 12-hour format AM PM
 
@@ -20,14 +23,14 @@ interface Article {
        hours = 12; 
    }
 
-   let newMinutes= minutes < 10 ? `0${minutes}` : minutes; //adds a 0 in front of a single digit minute
+   let newMinutes= minutes < 10 ? `0${minutes}` : minutes; //adds a 0 in front of a single digit minute*/
 
    let month = oldDate.getMonth() + 1; // months are 0 indexed, so we add 1
    let day = oldDate.getDate();
    let year = oldDate.getFullYear(); 
 
    // should look like for example 2:30pm 2/3/2025   
-   return `${hours}:${newMinutes}${ampm} ${month}/${day}/${year}`;
+   return ` ${month}/${day}/${year}`;
 };
 
 interface LargeSquareProps {
