@@ -65,9 +65,13 @@ function App() {
 
   return (
     <div className={`app-container ${isDarkMode ? "dark-mode" : "light-mode"}`}>
+      <button className="nav-button" onClick={() => setIsDarkMode(!isDarkMode)}>
+        {isDarkMode ? "Light Mode" : "Dark Mode"}
+      </button>
       <hr />
       <div className="date-container">
         <p className="date"> {currentDate}</p>
+
         <Link to="/signup">
           <img className="user-icon" src="/user.png" />
         </Link>
@@ -86,12 +90,6 @@ function App() {
             handleCategoryChange={handleCategoryChange}
             currentCategory={category} // Pass the current category to Squares component
           />
-          <button
-            className="nav-button"
-            onClick={() => setIsDarkMode(!isDarkMode)}
-          >
-            {isDarkMode ? "Light Mode" : "Dark Mode"}
-          </button>
         </div>
       )}
     </div>
