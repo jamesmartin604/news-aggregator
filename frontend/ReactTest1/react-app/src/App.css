@@ -63,10 +63,18 @@ html.dark-mode{
     padding: 5px;
     font-family: "Abel", sans-serif;
     cursor: pointer;
+    transition: transform 0.2 ease, box-shadow 0.2 ease;
   }
+
   
   .square.grow {
     flex: 1;
+  }
+
+  .square:hover {
+    transform: scale(1.03);
+    box-shadow: 0 4px 12px rbga(0,0,0,0.15);
+    background-color: #e0e0e0;
   }
   
   /* Squares Component Styles */
@@ -457,4 +465,56 @@ hr {
 .largeSquareButton:hover{
   background-Color: #9b0010;
   color: #b1b1b1;
+}
+
+.footer {
+  background-color: #f8f9fa;
+  padding: 2rem 0;
+  margin-top: 40px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.dark-mode .footer{
+  background-color: #1a1a1a;
+  border-top: 1px solid #333;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+
+/* Loader Styles */
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  gap: 10px;
+}
+
+.loader-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #FF0000;
+  animation: bounce 1.4s infinite ease-in-out;
+}
+
+.loader-dot:nth-child(1) {
+  animation-delay: -0.32s;
+}
+
+.loader-dot:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+@keyframes bounce {
+  0%, 80%, 100% { transform: scale(0); }
+  40% { transform: scale(1); }
 }
