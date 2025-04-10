@@ -179,6 +179,23 @@ html.dark-mode{
     list-style: none;
     transition: background 0.3s, color 0.3s;
   }
+
+  .navlinks a{
+    border-radius: 100px;
+    font-size: 20px;
+    transition: background-color 0.3s ease;
+    background-color: #e0e0e0 !important;
+    color: #333;
+  }
+
+  .navlinks a.active{
+    background-color: #FF0000 !important;
+    color: white;
+    font-weight: 600;
+  }
+
+
+
   /* Light Mode Button */
 .light-mode .navlinks {
   background: #fff;
@@ -344,6 +361,8 @@ hr {
   display: flex;
   gap: 10px;
 }
+
+
 
 .square {
   width: 100%;

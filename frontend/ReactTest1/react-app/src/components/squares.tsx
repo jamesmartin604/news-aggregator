@@ -14,9 +14,10 @@ interface Article {
 interface Props {
   articles: Article[];
   handleCategoryChange: (category: string) => void; // Add handleCategoryChange prop
+  currentCategory: string; // Add currentCategory prop
 }
 
-function Squares({ articles, handleCategoryChange }: Props) {
+function Squares({ articles, handleCategoryChange, currentCategory }: Props) {
   const[activeSquare, setActiveSquare] = useState<Article | null>(null); //state to cheep track of what square is clicked or not
 
    const squareClicked = (article: Article) =>{//when square is clicked, open large square
@@ -39,22 +40,22 @@ function Squares({ articles, handleCategoryChange }: Props) {
       <div className="navbar">
         <ul className="navlinks">
           <li>
-            <a href="#" onClick={() => handleCategoryChange("general")}>
+            <a href="#" onClick={() => handleCategoryChange("general")} className={currentCategory === "general" ? "active" : ""}>
               General
             </a>
           </li>
           <li>
-            <a href="#" onClick={() => handleCategoryChange("sports")}>
+            <a href="#" onClick={() => handleCategoryChange("sports")} className={currentCategory === "sports" ? "active" : ""}>
               Sports
             </a>
           </li>
           <li>
-            <a href="#" onClick={() => handleCategoryChange("technology")}>
+            <a href="#" onClick={() => handleCategoryChange("technology")} className={currentCategory === "technology" ? "active" : ""}>
               Technology
             </a>
           </li>
           <li>
-            <a href="#" onClick={() => handleCategoryChange("entertainment")}>
+            <a href="#" onClick={() => handleCategoryChange("entertainment")} className={currentCategory === "entertainment" ? "active" : ""}>
               Entertainment
             </a>
           </li>
