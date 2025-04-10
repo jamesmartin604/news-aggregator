@@ -1,5 +1,31 @@
 /* styles.css */
 @import url('https://fonts.googleapis.com/css2?family=Abel&display=swap');
+/* Default Light Mode */
+.app-container {
+  background-color: #ffffff;
+  color: #000000;
+  min-height: 100vh;
+  padding: 20px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Dark Mode */
+.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+html { /*html css to make sure darkmode covers whole screen*/
+  background-color: #ffffff;
+  color: #000000;
+}
+html.dark-mode{
+  background: #121212;
+  color: #ffffff;
+  transition: background 0.3s, color 0.3s;
+}
+
+
 /* ListGroup Component Styles */
 .list-group {
     list-style: none;
@@ -113,7 +139,18 @@
     padding: 14px 16px;
     text-decoration: none;
   }
+  .dark-mode li a{
+    background: #121212;
+    
+    transition: background 0.3s, color 0.3s;
+  }
   
+  .light-mode li a{
+    background-color: white;
+    color: black;
+    transition: background 0.3s, color 0.3s;
+  }
+
   li a:hover:not(.active) {
     background-color: lightgrey;
   }
@@ -127,13 +164,56 @@
     justify-content: center; /* pushes children to opposite sides */
     align-items: center; /* vertically centers them */
     padding: 1rem;
+    background-color: white;
+    transition: background 0.3s, color 0.3s;
+  }
+
+  .dark-mode .navbar {
+    background: #121212;
+    transition: background 0.3s, color 0.3s;
   }
 
   .navlinks {
     display: flex;
     gap: 3rem; /* space between each list item */
     list-style: none;
+    transition: background 0.3s, color 0.3s;
   }
+
+  .navlinks a{
+    border-radius: 100px;
+    font-size: 20px;
+    transition: background-color 0.3s ease;
+    background-color: #e0e0e0 !important;
+    color: #333;
+  }
+
+  .navlinks a.active{
+    background-color: #FF0000 !important;
+    color: white;
+    font-weight: 600;
+  }
+
+
+
+  /* Light Mode Button */
+.light-mode .navlinks {
+  background: #fff;
+  color: #333;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* Dark Mode Button */
+.dark-mode .navlinks {
+  background: #121212;
+  color: white;
+  transition: background 0.3s, color 0.3s;
+}
+
+
+
+
+
   h1{
     font-family: "Abel", sans-serif;
     font-size: 700%;
@@ -282,6 +362,8 @@ hr {
   gap: 10px;
 }
 
+
+
 .square {
   width: 100%;
   max-width: 250px;
@@ -301,3 +383,57 @@ hr {
   object-fit: cover; /* Crops and fills */
 }
 
+/*Popup large Square CSS*/
+.largeSquare{
+  position: absolute; 
+  border: 1px solid #dee2e6; /*border colour makes it look more distingishable in darkmode*/
+  border-radius: 0.25rem;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.265); 
+  position: fixed; /*makes content stay in place when you scroll*/
+  top: 50%; 
+  left: 50%;
+  transform: translate(-50%, -50%); /* centers box*/
+  max-Width: 80vw; /* prevent it from overflowing past window*/
+  max-Height: 80vh;
+  overflow-y: auto; /* scroll if content is too tall*/
+  display: flex;
+  flex-Direction: column;
+  justify-Content: center;
+  align-Items: center;
+  z-Index: 100; /* To make it above any other elements*/
+  background-Color: white; 
+  padding: 1rem;
+  border-Radius: 1rem;
+  transition: background 0.3s, color 0.3s; /*animation for darkmode/lightmode */
+}
+
+.dark-mode .largeSquare {
+  background: #121212;
+  transition: background 0.3s, color 0.3s;
+}
+
+.largeSquareDate{
+  font-size:small;
+  color: lightslategray;
+}
+
+.largeSquareButton{ /*Style for close button x for large square*/
+  position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    width: 24px;
+    height: 24px;
+    background-Color: #ff0019;
+    color: white;
+    border: none;
+    border-Radius: 4px;
+    display: flex;
+    justify-Content: center;
+    align-Items: center;
+    cursor: pointer;
+}
+
+.largeSquareButton:hover{
+  background-Color: #9b0010;
+  color: #b1b1b1;
+}
