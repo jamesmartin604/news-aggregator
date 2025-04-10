@@ -75,7 +75,11 @@ function App() {
           {isDarkMode ? "Light Mode" : "Dark Mode"}
         </button>
         <Link to="/signup">
-          <img className="user-icon" src="/user.png" />
+          <img
+            className="user-icon"
+            src={isDarkMode ? "/userWhite.png" : "/userBlack.png"}
+            alt="User Icon"
+          />
         </Link>
       </div>
       <hr />
