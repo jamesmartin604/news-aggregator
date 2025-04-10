@@ -65,13 +65,15 @@ function App() {
 
   return (
     <div className={`app-container ${isDarkMode ? "dark-mode" : "light-mode"}`}>
-      <button className="nav-button" onClick={() => setIsDarkMode(!isDarkMode)}>
-        {isDarkMode ? "Light Mode" : "Dark Mode"}
-      </button>
       <hr />
       <div className="date-container">
         <p className="date"> {currentDate}</p>
-
+        <button
+          className="darkModeButton"
+          onClick={() => setIsDarkMode(!isDarkMode)}
+        >
+          {isDarkMode ? "Light Mode" : "Dark Mode"}
+        </button>
         <Link to="/signup">
           <img className="user-icon" src="/user.png" />
         </Link>

@@ -197,22 +197,39 @@ html.dark-mode{
 
 
 
-  /* Light Mode Button */
+  /* Light Mode */
 .light-mode .navlinks {
   background: #fff;
   color: #333;
   transition: background 0.3s, color 0.3s;
 }
 
-/* Dark Mode Button */
+/* Dark Mode*/
 .dark-mode .navlinks {
   background: #121212;
   color: white;
   transition: background 0.3s, color 0.3s;
 }
 
-
-
+/*actual button*/
+.darkModeButton{
+  position: absolute;
+  left: 150px;
+  top: 52px;
+  height: 50px;
+  width: 150px;
+  background-color: #FF0000; /* Green */
+  border-radius: 100px;
+  border: none;
+  color: white;
+  padding: 0px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+}
 
 
   h1{
@@ -286,12 +303,14 @@ html.dark-mode{
   margin-right: 20px;
   margin-top: 15px;
   cursor: pointer;
+  position: absolute;
+  right: 10px;
 }
 
 
 .date-container {
   display: flex;
-  justify-content: space-between; /* This will space out the date and the icon */
+  /*justify-content: space-between; /* This will space out the date and the icon */
   margin-top: 12px;
 }
 
@@ -304,8 +323,9 @@ hr {
 
 
 .signup-container{
+  /*
   display: flex;
-  flex-direction: column;
+  flex-direction: column;*/
   margin: auto;
   margin-top: 200px;
   background: rgb(138, 11, 11);
@@ -314,8 +334,8 @@ hr {
 
 
 .signup-header{
-  display: flex;
-  flex-direction: column;
+  /*display: flex;
+  flex-direction: column;*/
   align-items: center;
   gap: 9px;
   width: 100%;
