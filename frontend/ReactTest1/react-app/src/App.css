@@ -458,3 +458,14 @@ hr {
   background-Color: #9b0010;
   color: #b1b1b1;
 }
+
+/*For google translate button (has no sizing for some reason, without this CSS it's stuck behind the darkmode button)*/
+.langSupport{
+ margin-left: 180px;
+ margin-top: 20px;
+}
+
+/*This gets rid of the toolbar that appears when changing language, makes screen look clunky*/
+.VIpgJd-ZVi9od-ORHb-OEVmcd {
+  display: none !important;  
+}
