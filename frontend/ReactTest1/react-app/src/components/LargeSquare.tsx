@@ -23,7 +23,7 @@ interface Article {
        hours = 12; 
    }
 
-   let newMinutes= minutes < 10 ? `0${minutes}` : minutes; //adds a 0 in front of a single digit minute*/
+   let newMinutes= minutes < 10 ? `0${minutes}` : minutes;*/ //adds a 0 in front of a single digit minute
 
    let month = oldDate.getMonth() + 1; // months are 0 indexed, so we add 1
    let day = oldDate.getDate();
