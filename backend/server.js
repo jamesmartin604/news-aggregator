@@ -124,7 +124,7 @@ function getValidDate(article) {
 }
 
 // Call API Every hour
-fetchAndStoreNews('entertainment'); //commented this out as it was calling too often
+//fetchAndStoreNews('entertainment'); //commented this out as it was calling too often
 //setInterval(() => fetchAndStoreNews('sports'), 30000);
 
 // Get all the articles

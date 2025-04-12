@@ -74,6 +74,7 @@ function App() {
         >
           {isDarkMode ? "Light Mode" : "Dark Mode"}
         </button>
+        <div className="langSupport" id="google_translate_element"  ></div> {/*Google Translate Button */}
         <Link to="/signup">
           <img
             className="user-icon"

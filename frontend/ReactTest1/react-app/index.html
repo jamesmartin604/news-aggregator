@@ -11,4 +11,23 @@
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
+
+<script type="text/javascript">
+  window.onload = function() { //google translate button only works after page has loaded, so wait till page loads
+    const script = document.createElement('script');
+    script.src = "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"; //fetch API
+    document.body.appendChild(script);
+}
+</script>
+
+<script type="text/javascript" >
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement( //load google tranlate element
+          {pageLanguage: 'en'}, //default language is english
+          'google_translate_element'
+      );
+
+  }
+</script>
+
 </html>

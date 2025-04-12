@@ -33,8 +33,8 @@ function Squares({ articles, handleCategoryChange, currentCategory }: Props) {
       onClick={() => setActiveSquare(null)} //click anywhere not in large square when its active to close large square
     >
       {/* Top One-Third*/}
-      <div className="squares-header">
-        <h1>
+      <div className="squares-header"> 
+        <h1 className="notranslate">
           AFF<span className="highlight">AI</span>RS
         </h1>
       </div>
@@ -90,6 +90,12 @@ function Squares({ articles, handleCategoryChange, currentCategory }: Props) {
                 e.stopPropagation();
                 squareClicked(article); //if square is clicked, open function squareClicked
               }}
+              tabIndex={0} //makes squares accessible via tab (accessiblility)
+              onKeyDown={(e) =>{ //if tab is selected, you can press enter or space to open/close article
+                if( e.key === 'Enter' || e.key === ' '){
+                  squareClicked(article)
+                }
+              }}
             >
               <Square
                 key={article.title}
@@ -109,6 +115,12 @@ function Squares({ articles, handleCategoryChange, currentCategory }: Props) {
               onClick={(e) => {
                 e.stopPropagation();
                 squareClicked(article); //if square is clicked, open function squareClicked
+              }}
+              tabIndex={0} //makes squares accessible via tab (accessiblility)
+              onKeyDown={(e) =>{ //if tab is selected, you can press enter or space to open/close article
+                if( e.key === 'Enter' || e.key === ' '){
+                  squareClicked(article)
+                }
               }}
             >
               <Square
