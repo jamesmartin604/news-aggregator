@@ -141,6 +141,11 @@ function Squares({ articles, handleCategoryChange, currentCategory }: Props) {
           </div>
         )}
       </div>
+      <footer className="footer">
+        <div className="footer-content">
+          <p>© 2025 AFFAIRS.</p>
+        </div>
+      </footer>
     </div>
   );
 }
