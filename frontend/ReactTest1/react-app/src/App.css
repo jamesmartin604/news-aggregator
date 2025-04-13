@@ -530,3 +530,44 @@ hr {
 .VIpgJd-ZVi9od-ORHb-OEVmcd {
   display: none !important;  
 }
+
+.summary-description {
+  font-style: italic; /* Make summaries italic */
+  border-left: 4px solid #FF4500; /* Add an orange-red border */
+  padding-left: 10px; /* Add some space from the border */
+  /* You could add a subtle background or other styles */
+  /* background-color: #f0f0f0; /* Example background for light mode */
+}
+
+/* Style for the Original Description (Optional) */
+.original-description {
+  /* You might not need specific styles, or just add padding for alignment */
+   border-left: 4px solid transparent; /* Keep alignment with summary if needed */
+   padding-left: 10px;
+   font-style: normal; /* Ensure it's not italic if default is changed */
+}
+
+/* Optional: Add a small label before the summary using ::before */
+.summary-description::before {
+  content: "AI Summary:"; /* Text to display */
+  display: block; /* Put it on its own line */
+  font-weight: bold;
+  font-style: normal; /* Override parent italic style */
+  font-size: 0.8em; /* Make it slightly smaller */
+  color: #555; /* Label color for light mode */
+  margin-bottom: 5px; /* Space between label and text */
+}
+
+/* Dark Mode Adjustments for the new styles */
+.dark-mode .summary-description {
+  border-left-color: #FFA500; /* Lighter orange border for dark mode */
+  /* background-color: #2a2a2a; /* Example background for dark mode */
+}
+
+.dark-mode .original-description {
+   border-left-color: transparent; /* Ensure transparent border in dark mode */
+}
+
+.dark-mode .summary-description::before {
+   color: #bbb; /* Lighter label color for dark mode */
+}
