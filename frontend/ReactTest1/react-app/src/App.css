@@ -318,7 +318,6 @@ html.dark-mode{
 
 .date-container {
   display: flex;
-  /*justify-content: space-between; /* This will space out the date and the icon */
   margin-top: 12px;
 }
 
@@ -338,12 +337,13 @@ hr {
   margin-top: 200px;
   background: rgb(138, 11, 11);
   padding-bottom: 30px;
+  width: 600px;;
 }
 
 
 .signup-header{
-  /*display: flex;
-  flex-direction: column;*/
+  display: flex;
+  flex-direction: column;
   align-items: center;
   gap: 9px;
   width: 100%;
@@ -384,6 +384,61 @@ hr {
   border-radius: 6px;
 }
 
+.input input {
+  height: 50px;
+  width: 400px;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: grey;
+  font-size: 19px;
+}
+
+.forgot-password {
+  padding-left: 62px;
+  margin-top: 27px;
+  color: grey;
+  font-size: 18px;
+}
+
+.forgot-password span {
+  color: rgb(138, 11, 11);
+  cursor: pointer;
+}
+
+.submit-container {
+  display: flex;
+  gap: 30px;
+  margin: 60px auto;
+}
+
+.submit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 220px;
+  height: 59px;
+  color: white;
+  background: gray;
+  border-radius: 50px;
+  font-size: 19px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.gray {
+  background:rgb(138, 11, 11);
+  color: white;
+}
+
+.back-button {
+  background: none;
+  border: none;
+  color: #f9f1f1;
+  font-size: 20px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
 
 
 .squares-row {
