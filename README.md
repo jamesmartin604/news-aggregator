@@ -6,10 +6,10 @@ The **News Aggregator** is a web application designed to compile and summarise i
 ---
 
 ## 🚀 Features
-**API Integration**: Fetches news articles using an API.
-**Summarisation**: Generates summaries using a language model (GPT-4).
-**Categorisation**: Filters and categorises articles by topics.
-**User Interface**: Displays summarised news in an intuitive, responsive interface.
+- **API Integration**: Fetches news articles using an API.
+- **Summarisation**: Generates summaries using a language model (GPT-4).
+- **Categorisation**: Filters and categorises articles by topics.
+- **User Interface**: Displays summarised news in an intuitive, responsive interface.
 
 ---
 
