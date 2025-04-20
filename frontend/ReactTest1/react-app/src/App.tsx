@@ -8,8 +8,14 @@ import { Link } from "react-router-dom"; // Import Link here
 
 //creates a new interface for both title and images
 interface Article {
+  _id?: string; // Optional: backend sends _id, good for React keys sometimes
   title: string;
   image: string;
+  description: string;
+  url: string;
+  source: string;
+  published_at: Date | string; // Use consistent type
+  is_summarized: boolean; // Include the new field
 }
 //Loading animation function
 const useLoading = () => {
@@ -49,7 +55,7 @@ function App() {
 
     fetch(`http://localhost:5000/articles?category=${category}`) // fetch articles based on category
       .then((response) => response.json())
-      .then((data) => {
+      .then((data: Article[]) => {
         setBackendData(data); // Set the fetched data to backendData
       })
       .catch((error) => {

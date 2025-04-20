@@ -9,6 +9,7 @@ interface Article {
   url: string;
   source: string;
   published_at: Date;
+  is_summarized: boolean;
 }
 
 interface Props {

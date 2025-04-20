@@ -7,6 +7,7 @@ interface Article {
     url: string,
     source: string;
     published_at: Date | string ; //published_at can be treated as a date or string
+    is_summarized: boolean; //this is used to determine if the article has been summarized or not
   }
 
   const formatDate = (date: Date | string ): string => { //this makes the Date into a more readable String
@@ -54,7 +55,9 @@ const LargeSquare: React.FC<LargeSquareProps> = ({ article, onClose }) => {
 <div style={{height: "10px"} } /> {/*this makes it so that the title text is less likely to be covered by the X close button */}
         <h5>{article.title}</h5>
         <br></br>
-       <p>{article.description}</p>
+        <p className={article.is_summarized ? 'summary-description' : 'original-description'}>
+          {article.description}
+      </p>
        <br></br>
        <p>Read more: <a href={article.url}>{article.source}</a></p>
        <p className="largeSquareDate">Published: {formatDate(article.published_at)}</p>
