@@ -138,7 +138,7 @@ function getValidDate(article) {
 }
 
 // Call API Every hour
-// fetchAndStoreNews('entertainment');
+//fetchAndStoreNews('sports');
 // setInterval(() => fetchAndStoreNews('sports'), 3600000); 
 
 
