@@ -4,6 +4,9 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import App from "./App.tsx";
 import SignUp from './SignUp.tsx'; // Import signup page
+import { PublicClientApplication } from "@azure/msal-browser";
+import { MsalProvider } from "@azure/msal-react";
+import { msalConfig } from "./Config.tsx";
 
 const titles = [
   "title 1",
@@ -14,15 +17,19 @@ const titles = [
   "title 6",
 ];
 
+const msalInstance = new PublicClientApplication(msalConfig);
+
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
+  <MsalProvider instance={msalInstance}>
     <Router>
       <Routes>
         <Route path="/" element={<App titles={titles} />} />
         <Route path="/signup" element={<SignUp />} />
       </Routes>
     </Router>
-  </StrictMode>
+  </MsalProvider>
+</StrictMode>
  );
  
 

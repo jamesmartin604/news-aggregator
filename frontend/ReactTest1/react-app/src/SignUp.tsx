@@ -1,12 +1,26 @@
 import React, { useState } from 'react';
 import { Link } from "react-router-dom"; // Import Link here
-
+import { useMsal } from "@azure/msal-react";
+import { loginRequest } from "./Config";
 
 const SignUp = () => {
   const [action, setAction] = useState("Sign Up");
   const [email, setEmail] = useState("");
 const [password, setPassword] = useState("");
 const [username, setUsername] = useState("");
+
+const { instance } = useMsal();
+
+const handleMicrosoftLogin = async () => {
+  try {
+    const response = await instance.loginPopup(loginRequest);
+    alert(`Welcome ${response.account?.name}`);
+    console.log("MS Login Success:", response.account);
+  } catch (error) {
+    console.error("MS Login Error:", error);
+    alert("Microsoft login failed.");
+  }
+};
 
 const handleSubmit = () => {
   if (action === "Log In") {
@@ -80,6 +94,9 @@ const handleSubmit = () => {
 
         <button className="submit" onClick={handleSubmit}>
           {action}
+        </button>
+        <button className="submit" onClick={handleMicrosoftLogin}>
+          Continue with Microsoft
         </button>
       </div>
     </div>
