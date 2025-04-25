@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from "react-router-dom"; // Import Link here
-import { useMsal } from "@azure/msal-react";
-import { loginRequest } from "./Config";
+import { Link } from "react-router-dom";
 
 const SignUp = () => {
   const [action, setAction] = useState("Sign Up");
@@ -9,35 +7,49 @@ const SignUp = () => {
 const [password, setPassword] = useState("");
 const [username, setUsername] = useState("");
 
-const { instance } = useMsal();
-
-const handleMicrosoftLogin = async () => {
-  try {
-    const response = await instance.loginPopup(loginRequest);
-    alert(`Welcome ${response.account?.name}`);
-    console.log("MS Login Success:", response.account);
-  } catch (error) {
-    console.error("MS Login Error:", error);
-    alert("Microsoft login failed.");
+const enterKey = (e: React.KeyboardEvent<HTMLInputElement>) => {
+  if (e.key === "Enter") {
+    handleSubmit();
   }
 };
 
 const handleSubmit = () => {
+  const usersBefore = localStorage.getItem("users");
+  const users = usersBefore ? JSON.parse(usersBefore) : [];
+
+
   if (action === "Log In") {
-    if (email && password) {
+    const matchingUser = users.find(
+      (user: any) => user.username === username && user.password === password
+    );
+
+    if (matchingUser) {
       alert("Successfully logged in!");
     } else {
-      alert("Please fill in both email and password.");
+      alert("Wrong username or password. Try again or sign in first.");
     }
   } else {
+    const usernameExists = users.some((user: any) => user.username === username);
+
+    if (usernameExists) {
+      alert("Username taken. Please choose another.");
+      return;
+    }
+
     if (username && email && password) {
+      const newUser = { username, email, password };
+      users.push(newUser);
+      localStorage.setItem("users", JSON.stringify(users));
       alert("Account created successfully!");
+      setAction("Log In");
+      setUsername("");
+      setEmail("");
+      setPassword("");
     } else {
       alert("Please fill in all fields.");
     }
   }
 };
-
  return (
    <div className="signup-container">
      <div className="signup-header">
@@ -55,6 +67,7 @@ const handleSubmit = () => {
             placeholder="Username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
+            onKeyDown={enterKey}
           />
         </div>
       )}
@@ -64,6 +77,7 @@ const handleSubmit = () => {
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          onKeyDown={enterKey} 
         />
       </div>
 
@@ -73,33 +87,28 @@ const handleSubmit = () => {
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          onKeyDown={enterKey} 
         />
       </div>
-     <div className="forgot-password">Forgotten Password? <span>Click here</span>
-     </div>
-     <div className="submit_container">
-          <div
-            className={action === "Log In" ? "submit gray" : "submit"}
-            onClick={() => setAction("Sign Up")}
-          >
-            Sign Up
-          </div>
-          <div
-            className={action === "Sign Up" ? "submit gray" : "submit"}
-            onClick={() => setAction("Log In")}
-          >
-            Log In
-          </div>
+      <div className="submit-container">
+        <div
+          className={action === "Log In" ? "submit gray" : "submit"}
+          onClick={() => setAction("Sign Up")}
+        >
+          Sign Up
         </div>
-
+        <div
+          className={action === "Sign Up" ? "submit gray" : "submit"}
+          onClick={() => setAction("Log In")}
+        >
+          Log In
+        </div>
         <button className="submit" onClick={handleSubmit}>
           {action}
         </button>
-        <button className="submit" onClick={handleMicrosoftLogin}>
-          Continue with Microsoft
-        </button>
       </div>
     </div>
+  </div>
   );
 };
 
