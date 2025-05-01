@@ -1,16 +1,8 @@
 import Square from "./square";
 import { useState } from "react";
 import LargeSquare from "./LargeSquare"; //import large square for showing summary
+import { Article } from "../types/Article"; // adjust path as needed
 
-interface Article {
-  title: string;
-  image: string;
-  description: string;
-  url: string;
-  source: string;
-  published_at: Date;
-  is_summarized: boolean;
-}
 
 interface Props {
   articles: Article[];
