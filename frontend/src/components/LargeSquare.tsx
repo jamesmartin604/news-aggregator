@@ -1,14 +1,6 @@
 import React from "react";
+import { Article } from "../types/Article"; // adjust path as needed
 
-interface Article { 
-    title: string;
-    image: string;
-    description: string,
-    url: string,
-    source: string;
-    published_at: Date | string ; //published_at can be treated as a date or string
-    is_summarized: boolean; //this is used to determine if the article has been summarized or not
-  }
 
   const formatDate = (date: Date | string ): string => { //this makes the Date into a more readable String
     const oldDate = new Date(date); //if date is being read as a string, make it a Date

@@ -1,22 +1,16 @@
 import Squares from "./components/squares"; // Make sure the import path is correct!
-import React, { useEffect, useState } from "react";
-import { Route, Routes } from "react-router-dom";
-import SignUp from "./SignUp.tsx";
-import "./App.css";
 import Loader from "./components/Loader.tsx";
 import { Link } from "react-router-dom"; // Import Link here
+import { Article } from "./types/Article.ts"; // adjust path as needed
+import { useState, useEffect } from "react"; // 
+import "./App.css";
 
-//creates a new interface for both title and images
-interface Article {
-  _id?: string; // Optional: backend sends _id, good for React keys sometimes
-  title: string;
-  image: string;
-  description: string;
-  url: string;
-  source: string;
-  published_at: Date | string; // Use consistent type
-  is_summarized: boolean; // Include the new field
-}
+
+
+
+
+
+
 //Loading animation function
 const useLoading = () => {
   const [loading, setLoading] = useState(true);
