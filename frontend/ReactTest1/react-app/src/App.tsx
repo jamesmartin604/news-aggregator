@@ -1,7 +1,5 @@
 import Squares from "./components/squares"; // Make sure the import path is correct!
 import React, { useEffect, useState } from "react";
-import { Route, Routes } from "react-router-dom";
-import SignUp from "./SignUp.tsx";
 import "./App.css";
 import Loader from "./components/Loader.tsx";
 import { Link } from "react-router-dom"; // Import Link here
@@ -44,8 +42,10 @@ function App() {
   useEffect(() => {
     if (isDarkMode) {
       document.documentElement.classList.add("dark-mode"); //adds .dark-mode to html
+      localStorage.setItem("isDarkMode", JSON.stringify(true));
     } else {
       document.documentElement.classList.remove("dark-mode"); //removes .dark-mode from html
+      localStorage.setItem("isDarkMode", JSON.stringify(false));
     }
   }, [isDarkMode]);
 
@@ -80,7 +80,8 @@ function App() {
         >
           {isDarkMode ? "Light Mode" : "Dark Mode"}
         </button>
-        <div className="langSupport" id="google_translate_element"  ></div> {/*Google Translate Button */}
+        <div className="langSupport" id="google_translate_element"></div>
+        {/*Google Translate Button */}
         <Link to="/signup">
           <img
             className="user-icon"
