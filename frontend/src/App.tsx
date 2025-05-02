@@ -2,14 +2,8 @@ import Squares from "./components/squares"; // Make sure the import path is corr
 import Loader from "./components/Loader.tsx";
 import { Link } from "react-router-dom"; // Import Link here
 import { Article } from "./types/Article.ts"; // adjust path as needed
-import { useState, useEffect } from "react"; // 
+import { useState, useEffect } from "react"; //
 import "./App.css";
-
-
-
-
-
-
 
 //Loading animation function
 const useLoading = () => {
@@ -38,8 +32,10 @@ function App() {
   useEffect(() => {
     if (isDarkMode) {
       document.documentElement.classList.add("dark-mode"); //adds .dark-mode to html
+      localStorage.setItem("isDarkMode", JSON.stringify(true));
     } else {
       document.documentElement.classList.remove("dark-mode"); //removes .dark-mode from html
+      localStorage.setItem("isDarkMode", JSON.stringify(false));
     }
   }, [isDarkMode]);
 
@@ -74,7 +70,8 @@ function App() {
         >
           {isDarkMode ? "Light Mode" : "Dark Mode"}
         </button>
-        <div className="langSupport" id="google_translate_element"  ></div> {/*Google Translate Button */}
+        <div className="langSupport" id="google_translate_element"></div>{" "}
+        {/*Google Translate Button */}
         <Link to="/signup">
           <img
             className="user-icon"
